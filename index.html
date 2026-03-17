@@ -92,10 +92,10 @@
 
 <script>
     const verbs = [
-        { text: "שָׁמַרְתִּי", stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "s" },
-        { text: "יְדַבְּרוּ", stem: "Piel", tense: "Yiqtol", p: "3", g: "m", n: "p" },
-        { text: "תִּכְתֹּבְנָה", stem: "Qal", tense: "Yiqtol", p: "3", g: "f", n: "p" },
-        { text: "יִקְטְלוּ", stem: "Qal", tense: "Yiqtol", p: "3", "2", g: "f", n: "p" }
+        { text: "שָׁמַרְתִּי", stem: ["Qal"], tense: ["Qatal"], p: ["1"], g: ["c"], n: ["s"] },
+        { text: "יְדַבְּרוּ", stem: ["Piel"], tense: ["Yiqtol"], p: ["3"], g: ["m"], n: ["p"] },
+        // Example of a multi-option verb:
+        { text: "יִקְטְלוּ", stem: ["Qal"], tense: ["Yiqtol"], p: ["2", "3"], g: ["m"], n: ["p"] }
     ];
 
     let currentVerb = null;
@@ -128,28 +128,24 @@
         let correctCount = 0;
 
         categories.forEach(cat => {
-            const correctAnswers = currentVerb[cat];
-            const userValue = userSelection[cat];
+            const correctOptions = currentVerb[cat];
+            const userChoice = userSelection[cat];
 
-            // Check if the answer is an array (multiple options) or a string (single option)
-            if (Array.isArray(correctAnswers)) {
-                if (correctAnswers.includes(userValue)) {
-                    correctCount++;
-                }
-            } else {
-                if (userValue === correctAnswers) {
-                    correctCount++;
-                }
+            // This checks if the user's selection is inside the array of correct options
+            if (Array.isArray(correctOptions) && correctOptions.includes(userChoice)) {
+                correctCount++;
+            } else if (userChoice === correctOptions) {
+                correctCount++;
             }
         });
 
-        const feedback = document.getElementById('feedback');
-        if (correctCount === 5) {
-            feedback.innerHTML = "<span class='success'>Perfect! 🌟</span>";
-        } else {
+    const feedback = document.getElementById('feedback');
+    if (correctCount === 5) {
+        feedback.innerHTML = "<span class='success'>Perfect! 🌟</span>";
+    } else {
         feedback.innerHTML = `<span class='error'>You got ${correctCount}/5 correct.</span>`;
-        }
     }
+}
 
     loadNext();
 </script>
