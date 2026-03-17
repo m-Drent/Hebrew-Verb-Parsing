@@ -17,20 +17,11 @@
         /* Button Styles */
         .btn-group { display: flex; flex-direction: column; gap: 5px; }
         .choice-btn { 
-            background: #fffdf5;
-            border: 2px solid #d4c5a1;
-            color: #5d4037;
+            padding: 8px 4px; border: 2px solid #edeff2; border-radius: 6px; 
+            background: white; cursor: pointer; font-size: 0.9rem; transition: 0.2s;
         }
-
-        .choice-btn:hover { 
-            background: #f5f0e1;
-        }
-
-        .choice-btn.selected { 
-            background: #8d6e63; /* Deep brown/tan */
-            color: white;
-            border-color: #5d4037;
-        }
+        .choice-btn:hover { background: #f0f7ff; border-color: #d0e7ff; }
+        .choice-btn.selected { background: #3498db; color: white; border-color: #2980b9; }
 
         /* Action Buttons */
         .controls { margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; }
