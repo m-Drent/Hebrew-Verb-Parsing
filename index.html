@@ -17,9 +17,18 @@
         /* Button Styles */
         .btn-group { display: flex; flex-direction: column; gap: 5px; }
         .choice-btn { 
-            padding: 8px 4px; border: 2px solid #edeff2; border-radius: 6px; 
-            background: white; cursor: pointer; font-size: 0.9rem; transition: 0.2s;
+            padding: 8px 2px; /* Reduced side padding */
+            border: 2px solid #edeff2; 
+            border-radius: 6px; 
+            background: white; 
+            cursor: pointer; 
+            font-size: 0.75rem; /* Reduced font size from 0.9rem to 0.75rem */
+            transition: 0.2s;
+            width: 100%; /* Forces button to stay inside the column width */
+            overflow: hidden; /* Prevents text from spilling out */
+            text-overflow: ellipsis; /* Adds '...' if text is too long */
         }
+    
         .choice-btn:hover { background: #ece7d1; border-color: #dbcea5; }
         .choice-btn.selected { background: #8a7650; color: white; border-color: #5b532c; }
 
@@ -46,14 +55,18 @@
             <button class="choice-btn" onclick="select(this, 'Qal')">Qal</button>
             <button class="choice-btn" onclick="select(this, 'Niphal')">Niphal</button>
             <button class="choice-btn" onclick="select(this, 'Piel')">Piel</button>
-            <button class="choice-btn" onclick="select(this, 'Hiphil')">Hiphil</button>
+            <button class="choice-btn" onclick="select(this, 'Pual')">Pual</button>
             <button class="choice-btn" onclick="select(this, 'Hitpael')">Hitpael</button>
+            <button class="choice-btn" onclick="select(this, 'Hiphil')">Hiphil</button>
+            <button class="choice-btn" onclick="select(this, 'Hophal')">Hophal</button>
         </div>
-        
+
         <div class="btn-group" data-category="tense">
             <div class="column-label">Tense</div>
             <button class="choice-btn" onclick="select(this, 'Qatal')">Perfect</button>
             <button class="choice-btn" onclick="select(this, 'Yiqtol')">Imperfect</button>
+            <button class="choice-btn" onclick="select(this, 'Jussive')">Jussive</button> 
+            <button class="choice-btn" onclick="select(this, 'Cohortative')">Cohort.</button> 
             <button class="choice-btn" onclick="select(this, 'Participle')">Ptc.</button>
             <button class="choice-btn" onclick="select(this, 'Imperative')">Impv.</button>
             <button class="choice-btn" onclick="select(this, 'Infinitive')">Inf.</button>
@@ -92,21 +105,20 @@
 
 <script>
     const verbs = [
-        { 
-            text: "שָׁמַרְתִּי", 
-            options: [{ stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "s" }] 
-        },
-        { 
-            text: "יְדַבְּרוּ", 
-            options: [{ stem: "Piel", tense: "Yiqtol", p: "3", g: "m", n: "p" }] 
-        },
-        {    
-            text: "תִּכְתֹּב",
-            options: [
-                { stem: "Qal", tense: "Yiqtol", p: "3", g: "f", n: "s" },
-                { stem: "Qal", tense: "Yiqtol", p: "2", g: "m", n: "s" }
-            ]    
-        }
+        // --- QAL STRONG (פקד) ---
+        { text: "פָּקַד", options: [{ stem: "Qal", tense: "Qatal", p: "3", g: "m", n: "s" }] },
+        { text: "פָּקְדָה", options: [{ stem: "Qal", tense: "Qatal", p: "3", g: "f", n: "s" }] },
+        { text: "פָּקַדְתָּ", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "m", n: "s" }] },
+        { text: "פָּקַדְתְּ", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "f", n: "s" }] },
+        { text: "פָּקַדְתִּי", options: [{ stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "s" }] },
+        { text: "פָּקְדוּ", options: [{ stem: "Qal", tense: "Qatal", p: "3", g: "c", n: "p" }] },
+        { text: "פְקַדְתֶּם", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "m", n: "p" }] },
+        { text: "פְקַדְתָּן", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "f", n: "p" }] },
+        { text: "פְקַדְנוּ", options: [{ stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "p" }] },
+        { text: "יִפְקד", options: [
+            { stem: "Qal", tense: "Yiqtol", p: "3", g: "m", n: "s" }, 
+            { stem: "Qal", tense: "Jussive", p: "3", g: "m", n: "s" }
+        ]}, 
     ];
     
     let currentVerb = null;
