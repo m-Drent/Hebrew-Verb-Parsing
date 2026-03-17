@@ -90,26 +90,34 @@
     </div>
 </div>
 
+
 <script>
+    // Updated Data Structure: Each verb has an 'options' array
     const verbs = [
-        { text: "שָׁמַרְתִּי", stem: ["Qal"], tense: ["Qatal"], p: ["1"], g: ["c"], n: ["s"] },
-        { text: "יְדַבְּרוּ", stem: ["Piel"], tense: ["Yiqtol"], p: ["3"], g: ["m"], n: ["p"] },
-        // Example of a multi-option verb:
-        { text: "יִקְטְלוּ", stem: ["Qal"], tense: ["Yiqtol"], p: ["2", "3"], g: ["m"], n: ["p"] }
+        { 
+            text: "שָׁמַרְתִּי", 
+            options: [{ stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "s" }] 
+        },
+        { 
+            text: "יְדַבְּרוּ", 
+            options: [{ stem: "Piel", tense: "Yiqtol", p: "3", g: "m", n: "p" }] 
+        },
+        { 
+            text: "תִּכְתֹּב", // The "homonym" example
+            options: [
+                { stem: "Qal", tense: "Yiqtol", p: "3", g: "f", n: "s" },
+                { stem: "Qal", tense: "Yiqtol", p: "2", g: "m", n: "s" }
+            ] 
+        }
     ];
 
     let currentVerb = null;
     let userSelection = { stem: "", tense: "", p: "", g: "", n: "" };
 
     function select(element, value) {
-        // Find the group this button belongs to
         const group = element.parentElement;
         const category = group.getAttribute('data-category');
-
-        // Remove 'selected' class from all buttons in this group
         group.querySelectorAll('.choice-btn').forEach(btn => btn.classList.remove('selected'));
-        
-        // Select this one
         element.classList.add('selected');
         userSelection[category] = value;
     }
@@ -125,8 +133,8 @@
 
     function checkParsing() {
         const feedback = document.getElementById('feedback');
-    
-        // Check if the user's current selection matches ANY of the valid option objects
+        
+        // This now correctly looks into currentVerb.options
         const isCorrect = currentVerb.options.some(validSet => {
             return validSet.stem === userSelection.stem &&
                    validSet.tense === userSelection.tense &&
@@ -134,7 +142,7 @@
                    validSet.g === userSelection.g &&
                    validSet.n === userSelection.n;
         });
-    
+
         if (isCorrect) {
             feedback.innerHTML = "<span class='success'>Perfect! 🌟</span>";
         } else {
@@ -142,7 +150,6 @@
         }
     }
 
-    
     loadNext();
 </script>
 
