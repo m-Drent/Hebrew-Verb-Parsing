@@ -124,29 +124,25 @@
     }
 
     function checkParsing() {
-        const categories = ['stem', 'tense', 'p', 'g', 'n'];
-        let correctCount = 0;
-
-        categories.forEach(cat => {
-            const correctOptions = currentVerb[cat];
-            const userChoice = userSelection[cat];
-
-            // This checks if the user's selection is inside the array of correct options
-            if (Array.isArray(correctOptions) && correctOptions.includes(userChoice)) {
-                correctCount++;
-            } else if (userChoice === correctOptions) {
-                correctCount++;
-            }
+        const feedback = document.getElementById('feedback');
+    
+        // Check if the user's current selection matches ANY of the valid option objects
+        const isCorrect = currentVerb.options.some(validSet => {
+            return validSet.stem === userSelection.stem &&
+                   validSet.tense === userSelection.tense &&
+                   validSet.p === userSelection.p &&
+                   validSet.g === userSelection.g &&
+                   validSet.n === userSelection.n;
         });
-
-    const feedback = document.getElementById('feedback');
-    if (correctCount === 5) {
-        feedback.innerHTML = "<span class='success'>Perfect! 🌟</span>";
-    } else {
-        feedback.innerHTML = `<span class='error'>You got ${correctCount}/5 correct.</span>`;
+    
+        if (isCorrect) {
+            feedback.innerHTML = "<span class='success'>Perfect! 🌟</span>";
+        } else {
+            feedback.innerHTML = "<span class='error'>Incorrect parsing.</span>";
+        }
     }
-}
 
+    
     loadNext();
 </script>
 
