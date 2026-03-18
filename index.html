@@ -107,18 +107,44 @@
     const verbs = [
         // --- QAL STRONG (פקד) ---
         { text: "פָּקַד", options: [{ stem: "Qal", tense: "Qatal", p: "3", g: "m", n: "s" }] },
-        { text: "פָּקְדָה", options: [{ stem: "Qal", tense: "Qatal", p: "3", g: "f", n: "s" }] },
-        { text: "פָּקַדְתָּ", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "m", n: "s" }] },
-        { text: "פָּקַדְתְּ", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "f", n: "s" }] },
-        { text: "פָּקַדְתִּי", options: [{ stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "s" }] },
-        { text: "פָּקְדוּ", options: [{ stem: "Qal", tense: "Qatal", p: "3", g: "c", n: "p" }] },
-        { text: "פְקַדְתֶּם", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "m", n: "p" }] },
-        { text: "פְקַדְתָּן", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "f", n: "p" }] },
-        { text: "פְקַדְנוּ", options: [{ stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "p" }] },
-        { text: "יִפְקד", options: [
-            { stem: "Qal", tense: "Yiqtol", p: "3", g: "m", n: "s" }, 
-            { stem: "Qal", tense: "Jussive", p: "3", g: "m", n: "s" }
-        ]}, 
+        { text: "פָּֽקְדָה", options: [{ stem: "Qal", tense: "Qatal", p: "3", g: "f", n: "s" }] },
+        { text: "פָּקַ֫דְתָּ", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "m", n: "s" }] },
+        { text: "פָּקַדְתָּ", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "f", n: "s" }] },
+        { text: "פָּקַ֫דְתִּי", options: [{ stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "s" }] },
+        { text: "פָּֽקְדוּ", options: [{ stem: "Qal", tense: "Qatal", p: "3", g: "c", n: "p" }] },
+        { text: "פְּקַדְתֶּם", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "m", n: "p" }] },
+        { text: "פְּקַדְתֶּן", options: [{ stem: "Qal", tense: "Qatal", p: "2", g: "f", n: "p" }] },
+        { text: "פָּקַ֫דְנוּ", options: [{ stem: "Qal", tense: "Qatal", p: "1", g: "c", n: "p" }] },
+        { text: "יִפְקֹד", options: [
+            { stem: "Qal", tense: "Yiqtol", p: "3", g: "m", n: "s" },
+         	{ stem: "Qal", tense: "Jussive", p: "3", g: "m", n: "s" }
+        ]},
+        { text: "תִּפְקֹד", options: [
+            { stem: "Qal", tense: "Yiqtol", p: "3", g: "f", n: "s" },
+            { stem: "Qal", tense: "Yiqtol", p: "2", g: "m", n: "s" }
+        ]},
+        { text: "תִּפְקְדִי", options: [{ stem: "Qal", tense: "Yiqtol", p: "2", g: "f", n: "s" }] },
+        { text: "אֶפְקֹד", options: [{ stem: "Qal", tense: "Yiqtol", p: "1", g: "c", n: "s" }] },
+        { text: "יִפְקְדוּ", options: [{ stem: "Qal", tense: "Yiqtol", p: "3", g: "m", n: "p" }] },
+        { text: "תִּפְקֹ֫דְנָה", options: [{ stem: "Qal", tense: "Yiqtol", p: "3", g: "f", n: "p" }] },
+        { text: "תִּפְקְדוּ", options: [{ stem: "Qal", tense: "Yiqtol", p: "2", g: "m", n: "p" }] },
+        { text: "תִּפְקֹ֫דְנָה", options: [{ stem: "Qal", tense: "Yiqtol", p: "2", g: "f", n: "p" }] },
+        { text: "נִפְקֹד", options: [{ stem: "Qal", tense: "Yiqtol", p: "1", g: "c", n: "p" }] },
+        { text: "אֶפְקְדָה", options: [{ stem: "Qal", tense: "Cohortative", p: "1", g: "c", n: "s" }] },
+        { text: "פְּקֹד", options: [{ stem: "Qal", tense: "Imperative", p: "2", g: "m", n: "s" }] },
+        { text: "פִּקְדִי", options: [{ stem: "Qal", tense: "Imperative", p: "2", g: "f", n: "s" }] },
+        { text: "פִּקְדוּ", options: [{ stem: "Qal", tense: "Imperative", p: "2", g: "m", n: "p" }] },
+        { text: "פְּקֹ֫דְנָה", options: [{ stem: "Qal", tense: "Imperative", p: "2", g: "f", n: "p" }] },
+        { text: "פֹּקֵד", options: [{ stem: "Qal", tense: "Participle", p: "n/a", g: "m", n: "s" }] },
+        { text: "פֹּקֶ֫דֶת", options: [{ stem: "Qal", tense: "Participle", p: "n/a", g: "f", n: "s" }] },
+        { text: "פֹּקְדִים", options: [{ stem: "Qal", tense: "Participle", p: "n/a", g: "m", n: "p" }] },
+        { text: "פֹּקְדוֹת", options: [{ stem: "Qal", tense: "Participle", p: "n/a", g: "f", n: "p" }] },
+        { text: "פָּקוּד", options: [{ stem: "Qal", tense: "Participle", p: "n/a", g: "m", n: "s" }] },
+        { text: "פְּקוּדָה", options: [{ stem: "Qal", tense: "Participle", p: "n/a", g: "f", n: "s" }] },
+        { text: "פְּקוּדִים", options: [{ stem: "Qal", tense: "Participle", p: "n/a", g: "m", n: "p" }] },
+        { text: "פְּקוּדוֹת", options: [{ stem: "Qal", tense: "Participle", p: "n/a", g: "f", n: "p" }] },
+        { text: "פְּקֹד", options: [{ stem: "Qal", tense: "Infinitive", p: "n/a", g: "n/a", n: "n/a" }] },
+        { text: "פָּקוֹד", options: [{ stem: "Qal", tense: "Infinitive", p: "n/a", g: "n/a", n: "n/a" }] }, 
     ];
     
     let currentVerb = null;
